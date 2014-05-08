@@ -3,10 +3,14 @@ class cell():
 	def __init__(self, xPos, yPos, state):
 		self.x = xPos
 		self.y = yPos
-		self.alive = state
+		self.current = state
+		self.future = state
 
 	def die(self):
-		self.alive = False
+		self.future = False
 
 	def respawn(self):
-		self.alive = True
+		self.future = True
+
+	def switch(self):
+		self.current = self.future
