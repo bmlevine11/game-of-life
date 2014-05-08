@@ -2,26 +2,30 @@ from gameOfLife.cell import cell
 from nose.tools import assert_equal
 from nose.tools import with_setup
 
-def test_does_cell_exist():
-	"Does the cell object exist and instantiate properly?"
-	testCell = cell(1,2,True)
-	assert_equal(testCell.x, 1)
-	assert_equal(testCell.y, 2)
-	assert_equal(testCell.alive, True)
+class cell_test():
 
-def test_cell_die():
-	"Can the cell die?"
-	testCell = cell(1,2,True)
-	testCell.die()
-	assert_equal(testCell.alive, False)
+	def setup(self):
+		self.testCell = cell(1,2,True)
 
-def test_cell_respawn():
-	"Can the cell rise from the dead?"
-	testCell = cell(1,2,True)
-	testCell.respawn
-	assert_equal(testCell.alive, True)
+	def teardown(self):
+		pass
 
-def test_is_alive():
-	"Is the cell dead or alive?"
-	testCell = cell(1,2,True)
-	assert_equal(testCell.alive, True)
+	def test_does_cell_exist(self):
+		"Does the cell object exist and instantiate properly?"
+		assert_equal(self.testCell.x, 1)
+		assert_equal(self.testCell.y, 2)
+		assert_equal(self.testCell.alive, True)
+	
+	def test_cell_die(self):
+		"Can the cell die?"
+		self.testCell.die()
+		assert_equal(self.testCell.alive, False)
+	
+	def test_cell_respawn(self):
+		"Can the cell rise from the dead?"
+		self.testCell.respawn
+		assert_equal(self.testCell.alive, True)
+	
+	def test_is_alive(self):
+		"Is the cell dead or alive?"
+		assert_equal(self.testCell.alive, True)
